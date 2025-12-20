@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Voice Over Translation",
   "version": "1.10.5",
-  "description": "Закадровый перевод видео от Yandex",
+  "description": "A small Firefox extension that adds voice-over translation for videos from YaBrowser.",
 
   "icons": {
     "48": "icons/icon-48.png",
@@ -81,7 +81,7 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "vot@firefox.extension",
+      "id": "voice-over-translation@meowrch",
       "strict_min_version": "109.0",
       "update_url": "https://raw.githubusercontent.com/meowrch/voice-over-translation/master/updates.json"
     }
