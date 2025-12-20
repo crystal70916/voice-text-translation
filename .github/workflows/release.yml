@@ -1,4 +1,4 @@
-# adopted from [https://github.com/MihailRis/VoxelEngine-Cpp](https://github.com/MihailRis/VoxelEngine-Cpp)
+# adopted from https://github.com/MihailRis/VoxelEngine-Cpp
 name: Release
 
 on:
@@ -13,102 +13,8 @@ jobs:
     name: Build Release
     uses: ./.github/workflows/build.yml
 
-  build_webextension:
-    name: Build and Sign WebExtension
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build WebExtension
-        run: npm run build:webext
-      
-      - name: Get version from package.json
-        id: version
-        run: |
-          VERSION=$(jq -r '.version' package.json)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Building WebExtension version: $VERSION"
-      
-      - name: Update manifest version
-        run: |
-          cd dist-webext
-          jq --arg version "${{ steps.version.outputs.version }}" '.version = $version' manifest.json > manifest.tmp.json
-          mv manifest.tmp.json manifest.json
-          echo "Manifest version updated to: ${{ steps.version.outputs.version }}"
-      
-      - name: Install web-ext
-        run: npm install -g web-ext
-      
-      - name: Sign extension with AMO
-        id: sign
-        run: |
-          cd dist-webext
-          
-          # Проверяем наличие API ключей
-          if [ -z "${{ secrets.AMO_API_KEY }}" ] || [ -z "${{ secrets.AMO_API_SECRET }}" ]; then
-            echo "⚠️ AMO API keys not found, creating unsigned XPI"
-            zip -r ../vot-webext-${{ steps.version.outputs.version }}.xpi .
-            echo "xpi_name=vot-webext-${{ steps.version.outputs.version }}.xpi" >> $GITHUB_OUTPUT
-            echo "signed=false" >> $GITHUB_OUTPUT
-          else
-            echo "🔐 Signing with AMO..."
-            web-ext sign \
-              --api-key="${{ secrets.AMO_API_KEY }}" \
-              --api-secret="${{ secrets.AMO_API_SECRET }}" \
-              --channel=unlisted \
-              --timeout=900000
-            
-            # Находим подписанный XPI файл
-            SIGNED_XPI=$(find web-ext-artifacts -name "*.xpi" | head -n 1)
-            
-            if [ -n "$SIGNED_XPI" ]; then
-              NEW_NAME="vot-webext-${{ steps.version.outputs.version }}.xpi"
-              cp "$SIGNED_XPI" "../$NEW_NAME"
-              echo "xpi_name=$NEW_NAME" >> $GITHUB_OUTPUT
-              echo "signed=true" >> $GITHUB_OUTPUT
-              echo "✅ Extension signed successfully"
-            else
-              echo "❌ Signing failed, creating unsigned XPI"
-              cd ..
-              zip -r vot-webext-${{ steps.version.outputs.version }}.xpi dist-webext/
-              echo "xpi_name=vot-webext-${{ steps.version.outputs.version }}.xpi" >> $GITHUB_OUTPUT
-              echo "signed=false" >> $GITHUB_OUTPUT
-            fi
-          fi
-        continue-on-error: true
-        env:
-          AMO_API_KEY: ${{ secrets.AMO_API_KEY }}
-          AMO_API_SECRET: ${{ secrets.AMO_API_SECRET }}
-      
-      - name: Generate checksums
-        run: |
-          if [ -f "${{ steps.sign.outputs.xpi_name }}" ]; then
-            sha256sum ${{ steps.sign.outputs.xpi_name }} > ${{ steps.sign.outputs.xpi_name }}.sha256
-            echo "📊 Checksum created:"
-            cat ${{ steps.sign.outputs.xpi_name }}.sha256
-          fi
-      
-      - name: Upload WebExtension artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: vot-webextension
-          path: |
-            ${{ steps.sign.outputs.xpi_name }}
-            ${{ steps.sign.outputs.xpi_name }}.sha256
-          retention-days: 90
-
   create_release:
-    needs: [build_release, build_webextension]
+    needs: [build_release]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
@@ -117,17 +23,6 @@ jobs:
           path: vot
           pattern: vot-*
           merge-multiple: true
-      
-      - name: Download WebExtension artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: vot-webextension
-          path: vot
-      
-      - name: List all files
-        run: |
-          echo "📦 Files to be released:"
-          ls -lh vot/
       
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -139,5 +34,3 @@ jobs:
           prerelease: false
           files: |
             vot/vot*.user.js
-            vot/vot-webext-*.xpi
-            vot/vot-webext-*.xpi.sha256
