@@ -11,15 +11,16 @@
 [greasemonkey-link]: https://github.com/greasemonkey/greasemonkey
 [orangemonkey-link]: https://chromewebstore.google.com/detail/OrangeMonkey/ekmeppjgajofkpiofbebgcbohbmfldaf
 [user-js-and-css-link]: https://tenrabbits.github.io/user-js-css-docs/ru/
+[last-release]: https://github.com/meowrch/voice-over-translation/releases/latest
 
 <!-- FAQs / Wiki -->
 
-[firemonkey-how-to]: https://github.com/ilyhalight/voice-over-translation/wiki/%5BRU%5D-FAQ#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%80%D0%B0%D1%81%D1%88%D0%B8%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81-firemonkey
-[user-js-and-css-how-to]: https://github.com/ilyhalight/voice-over-translation/wiki/%5BRU%5D-FAQ#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%80%D0%B0%D1%81%D1%88%D0%B8%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81-user-js-and-css
+[firemonkey-how-to]: https://github.com/meowrch/voice-over-translation/wiki/%5BRU%5D-FAQ#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%80%D0%B0%D1%81%D1%88%D0%B8%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81-firemonkey
+[user-js-and-css-how-to]: https://github.com/meowrch/voice-over-translation/wiki/%5BRU%5D-FAQ#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%80%D0%B0%D1%81%D1%88%D0%B8%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81-user-js-and-css
 [devmode-enable]: https://www.tampermonkey.net/faq.php#Q209
-[vot-faq]: https://github.com/ilyhalight/voice-over-translation/wiki/%5BRU%5D-FAQ
-[vot-supported-sites]: https://github.com/ilyhalight/voice-over-translation/wiki/%5BRU%5D-Supported-sites
-[vot-wiki]: https://github.com/ilyhalight/voice-over-translation/wiki
+[vot-faq]: https://github.com/meowrch/voice-over-translation/wiki/%5BRU%5D-FAQ
+[vot-supported-sites]: https://github.com/meowrch/voice-over-translation/wiki/%5BRU%5D-Supported-sites
+[vot-wiki]: https://github.com/meowrch/voice-over-translation/wiki
 
 <!-- Our servers -->
 
@@ -32,7 +33,7 @@
 
 <!-- Install / Build -->
 
-[vot-dist]: https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
+[vot-dist]: https://raw.githubusercontent.com/meowrch/voice-over-translation/master/dist/vot.user.js
 [nodejs-link]: https://nodejs.org
 [bun-link]: https://bun.sh/
 
@@ -46,12 +47,12 @@
 [vot-readme-ru]: README.md
 [vot-readme-en]: README-EN.md
 [vot-langs]: LANG_SUPPORT.md
-[vot-issues]: https://github.com/ilyhalight/voice-over-translation/issues
+[vot-issues]: https://github.com/meowrch/voice-over-translation/issues
 [votjs-link]: https://github.com/FOSWLY/vot.js
 [vot-cli-link]: https://github.com/FOSWLY/vot-cli
 [yabrowser-link]: https://yandex.ru/project/browser/streams/technology
 [yatranslate-link]: https://translate.yandex.ru/
-[contributors-link]: https://github.com/ilyhalight/voice-over-translation/graphs/contributors
+[contributors-link]: https://github.com/meowrch/voice-over-translation/graphs/contributors
 
 <!-- Content -->
 
@@ -65,8 +66,17 @@
 
 Закадровый перевод видео, теперь, доступен не только в [YandexBrowser][yabrowser-link]. Очень признателен разработчикам создающим **[Yandex.Translate][yatranslate-link]**, а также всем [контрибьюторам][contributors-link] за помощь в улучшении расширения. Спасиб <3
 
+## О форке
+Мы добавили автоматическую сборку расширения под Firefox
+Оригинальный проект вы можете найти по [этой ссылке](https://github.com/ilyhalight/voice-over-translation)
+
 ## Установка расширения:
 
+### Полноценное расширение Firefox
+
+Скачайте подписанный XPI файл из [Releases](last-release).
+
+### Через Tampermonkey
 > [!WARNING]
 > Если вы пользуетесь Tampermonkey 5.2.0+, не забудьте [включить "Режим разработчика"][devmode-enable]!
 
@@ -268,6 +278,6 @@ bun install
 
 Пожайлуста, ознакомьтесь с [гайдом для контрибьюторов](./CONTRIBUTING.md).
 
-![example btn](https://github.com/ilyhalight/voice-over-translation/blob/master/img/example.png "btn")
+![example btn](https://github.com/meowrch/voice-over-translation/blob/master/img/example.png "btn")
 
 > Основано на проекте [sodapng/voice-over-translation](https://github.com/sodapng/voice-over-translation) (license MIT)
