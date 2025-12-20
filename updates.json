@@ -1,1 +1,13 @@
-{}
+{
+  "addons": {
+    "vot@firefox.extension": {
+      "updates": [
+        {
+          "version": "1.10.5",
+          "update_link": "https://github.com/meowrch/voice-over-translation/releases/download/v1.10.5/vot@meowrch.xpi",
+          "update_hash": "sha256:e9a62b47e9b98390dd4a3884451dfd7a3c67ef75eba17d317d0b59d078cb50b5"
+        }
+      ]
+    }
+  }
+}
