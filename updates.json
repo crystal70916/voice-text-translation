@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "vot@firefox.extension": {
+      "updates": [
+        {
+          "version": "1.0.0",
+          "update_link": "https://github.com/meowrch/voice-over-translation/releases/latest/download/vot-webext-latest.xpi"
+        }
+      ]
+    }
+  }
+}
