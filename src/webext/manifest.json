@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Voice Over Translation",
-  "version": "1.10.4",
+  "version": "1.10.5",
   "description": "Закадровый перевод видео от Yandex",
 
   "icons": {
