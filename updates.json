@@ -3,8 +3,9 @@
     "vot@firefox.extension": {
       "updates": [
         {
-          "version": "1.0.0",
-          "update_link": "https://github.com/meowrch/voice-over-translation/releases/latest/download/vot-webext-latest.xpi"
+          "version": "1.10.5",
+          "update_link": "https://github.com/meowrch/voice-over-translation/releases/download/v1.10.5/vot-webext-1.10.5.xpi",
+          "update_hash": "sha256:b15d734ed317e40e2f9610f4c1de59fcbdb93c594ffa2ef78571dc8929db812e"
         }
       ]
     }

@@ -66,7 +66,7 @@
 The voice-over translation of the video is now available not only in [YandexBrowser][yabrowser-link]. Very grateful to devs who create **[Yandex.Translate][yatranslate-link]**, and all [contributors][contributors-link] who help make the extension better. Thanks <3
 
 ## About the fork
-We have added automatic compilation of the extension for Firefox.
+We have added automatic compilation of the extension for Firefox. \
 You can find the original project at [this link](https://github.com/ilyhalight/voice-over-translation).
 
 ## Installing the extension:
