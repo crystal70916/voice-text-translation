@@ -1,0 +1,88 @@
+{
+  "manifest_version": 2,
+  "name": "Voice Over Translation",
+  "version": "1.10.4",
+  "description": "Закадровый перевод видео от Yandex",
+
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "permissions": ["storage", "webRequest", "<all_urls>"],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.youtu.be/*",
+        "*://www.youtube-nocookie.com/*",
+        "*://*.twitch.tv/*",
+        "*://player.twitch.tv/*",
+        "*://*.xvideos.com/*",
+        "*://*.pornhub.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.vk.com/*",
+        "*://*.vkvideo.ru/*",
+        "*://my.mail.ru/*",
+        "*://videoapi.my.mail.ru/*",
+        "*://video.sibnet.ru/*",
+        "*://*.9gag.com/*",
+        "*://*.twitch.tv/*",
+        "*://coub.com/*",
+        "*://*.reddit.com/*",
+        "*://*.facebook.com/*",
+        "*://rutube.ru/*",
+        "*://*.bilibili.com/*",
+        "*://www.bilibili.tv/*",
+        "*://*.tiktok.com/*",
+        "*://vimeo.com/*",
+        "*://www.xbox.com/*",
+        "*://www.epicgames.com/*",
+        "*://*.coursera.org/*",
+        "*://www.udemy.com/*",
+        "*://archive.org/*",
+        "*://*.rumble.com/*",
+        "*://*.bitchute.com/*",
+        "*://*.eporner.com/*",
+        "*://ok.ru/*",
+        "*://trovo.live/*",
+        "*://*.yandex.ru/*",
+        "*://*.yandex.com/*",
+        "*://*.yandex.kz/*",
+        "*://*.twitch.tv/*",
+        "*://www.patreon.com/*",
+        "*://dai.ly/*",
+        "*://*.dailymotion.com/*",
+        "*://*.pinterest.com/*",
+        "*://*.weverse.io/*",
+        "*://*.newgrounds.com/*",
+        "*://*.egghead.io/*",
+        "*://*.youku.com/*",
+        "*://*.archive.org/*",
+        "*://*.kodik.info/*",
+        "*://*.piped.video/*",
+        "*://*.ricktube.ru/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "web_accessible_resources": ["content.js", "icons/*"],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "vot@firefox.extension",
+      "strict_min_version": "109.0"
+    }
+  }
+}

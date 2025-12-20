@@ -23,6 +23,7 @@
     "@vot.js/core": "^2.4.12",
     "browser-id3-writer": "^6.2.0",
     "browserslist": "^4.25.0",
+    "copy-webpack-plugin": "^13.0.1",
     "eslint": "^9.29.0",
     "eslint-webpack-plugin": "^5.0.2",
     "globals": "^16.2.0",
@@ -53,7 +54,10 @@
     "format": "npx @biomejs/biome check --write ./src",
     "gen:wiki": "bun run ./scripts/wiki-gen/index.js",
     "localize": "npx \"@toil/localize-tui\"",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "build:webext": "webpack build -c .webpack/webpack.webext.config.js",
+    "build:webext:dev": "webpack build -c .webpack/webpack.webext.config.js --node-env development --watch",
+    "package:webext": "cd dist-webext && zip -r ../vot-firefox.xpi ."
   },
   "dependencies": {
     "@vot.js/ext": "^2.4.12",

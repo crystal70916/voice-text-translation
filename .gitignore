@@ -145,3 +145,6 @@ dist/*.proxy.user.js
 .pnp.*
 
 .idea
+
+# webpack
+dist-webext
